@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7b1fa58210109715af4b6b3f36b3713, type: 3}
-  m_Name: Kalachicof
+  m_Name: Blaster
   m_EditorClassIdentifier: 
-  weaponName: reezg
+  speed: 9.4
   damage: 26
-  fireRate: 0.93
-  range: 1.27
+  fireRate: 0.1
+  range: 10
+  precision: 5.1

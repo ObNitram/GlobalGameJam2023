@@ -7,9 +7,10 @@ namespace Script.Player.Movement
     {
 
         [SerializeField] private float _speed = 200.0f;
-        [SerializeField] private float _rotationSpeed = 200.0f;
+        [SerializeField] private float _rotationSpeed = 700.0f;
         
-
+        private InputManager _inputManager;
+        
         private Vector2 _move;
         private Vector2 _look;
         private bool _mustLook;
@@ -22,6 +23,24 @@ namespace Script.Player.Movement
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _inputManager = new InputManager();
+            _inputManager.Player.Move.performed += OnMove;
+            _inputManager.Player.Move.canceled += OnMove;
+            
+            _inputManager.Player.Look.performed += OnLook;
+            _inputManager.Player.Look.canceled += OnLook;
+            
+            _inputManager.Player.MustLook.performed += OnMustLook;
+            _inputManager.Player.MustLook.canceled += OnMustLook;
+        }
+        
+        private void OnEnable()
+        {
+            _inputManager.Enable();
+        }
+        private void OnDisable()
+        {
+            _inputManager.Disable();
         }
 
 
@@ -55,9 +74,7 @@ namespace Script.Player.Movement
         
         private void MovePlayer()
         {
-            _rb.AddForce(_move * _speed) ;
-            
-                
+            _rb.AddForce(_move * (_speed)) ;
             
             if (!_mustLook)
             {
