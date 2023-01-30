@@ -1,19 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+// lichess.org
+
+
+namespace Script.Weapon
 {
-    [SerializeField] private Rigidbody2D _rigidbody2D;
-    
-    // Start is called before the first frame update
-    public void initBullet(WeaponSO weaponSO)
+    public class Bullet : MonoBehaviour
     {
-        //_rigidbody2D.velocity = transform.right * weaponSO.speed;
-        _rigidbody2D.AddForce(transform.right * weaponSO.speed, ForceMode2D.Impulse);
-        Destroy(gameObject, weaponSO.range);
+        [SerializeField] private Rigidbody2D _rigidbody2D;
+
+        private WeaponSO _weaponSo;
+
+
+        // Start is called before the first frame update
+        public void initBullet(WeaponSO weaponSO, Vector2 initialSpeed)
+        {
+            _rigidbody2D.AddForce(transform.right * weaponSO.speed, ForceMode2D.Impulse);
+            _rigidbody2D.AddForce(initialSpeed, ForceMode2D.Impulse);
+            Destroy(gameObject, weaponSO.range);
+            _weaponSo = weaponSO;
+        }
+
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.CompareTag(tag)) return;
+
+            Enemy enemy = col.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.Damage(_weaponSo.damage);
+            }
+
+            Destroy(gameObject);
+        }
     }
-    
-    
-    
 }

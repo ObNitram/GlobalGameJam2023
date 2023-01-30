@@ -13,7 +13,8 @@ namespace Script.Weapon
 
     
         private InputManager _inputManager;
-    
+        private Rigidbody2D _rb;
+        
         private bool _mustShoot = false;
         private WaitForSeconds _fireRateWait;
     
@@ -23,6 +24,8 @@ namespace Script.Weapon
             _inputManager = InputManagerSingleton.Instance;
             _inputManager.Player.Shoot.started += StartShoot;
             _inputManager.Player.Shoot.canceled += StopShoot;
+            
+            _rb = GetComponent<Rigidbody2D>();
         }
 
         private void OnEnable()
@@ -72,7 +75,7 @@ namespace Script.Weapon
                     Quaternion.Euler(0, 0, UnityEngine.Random.Range(-_weaponSO.precision, _weaponSO.precision));
                 rotation *= _firePoint.rotation;
                 Bullet bullet = Instantiate<Bullet>(_bulletPrefab, _firePoint.position, rotation);
-                bullet.initBullet(_weaponSO);
+                bullet.initBullet(_weaponSO, _rb.velocity);
             }
         
         }

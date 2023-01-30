@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Script.Player.Movement
+namespace Script.Player
 {
     public class PlayerController : MonoBehaviour
     {
@@ -17,7 +17,7 @@ namespace Script.Player.Movement
 
         // ReSharper disable once InconsistentNaming
         [SerializeField] private bool _isOnMoose = true;
-
+        [SerializeField] private Camera _camera;
         
         private Rigidbody2D _rb;
         private void Awake()
@@ -62,7 +62,7 @@ namespace Script.Player.Movement
             
             var position = transform.position;
             Vector2 objectPos = new Vector2(position.x, position.y);
-            if (Camera.main != null) _look = Camera.main.ScreenToWorldPoint(_look);
+            _look = _camera.ScreenToWorldPoint(_look);
             _look-= objectPos;
             _look.Normalize();
         }
