@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "ScriptableObject/Weapon")]
 public class WeaponSO : ScriptableObject
@@ -14,6 +15,8 @@ public class WeaponSO : ScriptableObject
    public float range;
    [Range(0,90)]
    public float precision;
+   [Range(1,10)]
+   public int numberOfBullets;
    
 }
 

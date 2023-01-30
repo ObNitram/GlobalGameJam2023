@@ -23,7 +23,7 @@ namespace Script.Player.Movement
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _inputManager = new InputManager();
+            _inputManager = InputManagerSingleton.Instance;
             _inputManager.Player.Move.performed += OnMove;
             _inputManager.Player.Move.canceled += OnMove;
             
@@ -36,11 +36,16 @@ namespace Script.Player.Movement
         
         private void OnEnable()
         {
-            _inputManager.Enable();
+            _inputManager.Player.Move.Enable();
+            _inputManager.Player.Look.Enable();
+            _inputManager.Player.MustLook.Enable();
         }
         private void OnDisable()
         {
-            _inputManager.Disable();
+            _inputManager.Player.Move.Disable();
+            _inputManager.Player.Look.Disable();
+            _inputManager.Player.MustLook.Disable();
+
         }
 
 

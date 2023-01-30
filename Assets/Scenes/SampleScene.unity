@@ -3385,7 +3385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firePoint: {fileID: 2139752336}
   _bulletPrefab: {fileID: 7186308709619964718, guid: 1eda0a427063a4fb9a2cce8810d8791b, type: 3}
-  _weaponSO: {fileID: 11400000, guid: bb021d2a485b40eb8b4467d8638e6f4f, type: 2}
+  _weaponSO: {fileID: 11400000, guid: 9966abc7208f5c3079d6c6b5f8937435, type: 2}
   _isRapidFire: 1
 --- !u!114 &1153106915
 MonoBehaviour:
@@ -34360,7 +34360,7 @@ GameObject:
   - component: {fileID: 1899767615}
   - component: {fileID: 1899767614}
   m_Layer: 0
-  m_Name: Hexagon Flat-Top
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34426,7 +34426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899767611}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.91, y: 0.18, z: 0}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34540,7 +34540,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023015674}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
