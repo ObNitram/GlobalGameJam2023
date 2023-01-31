@@ -18,3 +18,4 @@ MonoBehaviour:
   range: 2.54
   precision: 33.6
   numberOfBullets: 10
+  sprite: {fileID: 21300000, guid: 649688cc5598ebe228cdee644ca36b57, type: 3}

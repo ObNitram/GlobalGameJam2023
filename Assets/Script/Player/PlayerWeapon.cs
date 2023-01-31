@@ -1,6 +1,8 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 namespace Script.Weapon
 {
@@ -10,10 +12,11 @@ namespace Script.Weapon
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private WeaponSO _weaponSO;
         [SerializeField] private bool _isRapidFire = false;
-
+      
     
         private InputManager _inputManager;
         private Rigidbody2D _rb;
+        private Light2D _light;
         
         private bool _mustShoot = false;
         private WaitForSeconds _fireRateWait;
@@ -26,6 +29,7 @@ namespace Script.Weapon
             _inputManager.Player.Shoot.canceled += StopShoot;
             
             _rb = GetComponent<Rigidbody2D>();
+            _light = _firePoint.GetComponent<Light2D>();
         }
 
         private void OnEnable()
@@ -69,6 +73,8 @@ namespace Script.Weapon
 
         void Shoot()
         {
+            _light.intensity = 1;
+            
             for (int i = 0; i < _weaponSO.numberOfBullets; i++)
             {
                 Quaternion rotation =
@@ -76,8 +82,8 @@ namespace Script.Weapon
                 rotation *= _firePoint.rotation;
                 Bullet bullet = Instantiate<Bullet>(_bulletPrefab, _firePoint.position, rotation);
                 bullet.initBullet(_weaponSO, _rb.velocity);
-            }
-        
+            } 
+
         }
     }
 }

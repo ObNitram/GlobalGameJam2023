@@ -1,3 +1,4 @@
+using Script.Interface;
 using UnityEngine;
 
 // lichess.org
@@ -8,7 +9,8 @@ namespace Script.Weapon
     public class Bullet : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
-
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+        
         private WeaponSO _weaponSo;
 
 
@@ -19,6 +21,7 @@ namespace Script.Weapon
             _rigidbody2D.AddForce(initialSpeed, ForceMode2D.Impulse);
             Destroy(gameObject, weaponSO.range);
             _weaponSo = weaponSO;
+            _spriteRenderer.sprite = weaponSO.sprite;
         }
 
 
@@ -26,11 +29,8 @@ namespace Script.Weapon
         {
             if (col.CompareTag(tag)) return;
 
-            Enemy enemy = col.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.Damage(_weaponSo.damage);
-            }
+            IAttackable enemy = col.GetComponent<IAttackable>();
+            enemy?.Damage(_weaponSo.damage);
 
             Destroy(gameObject);
         }
