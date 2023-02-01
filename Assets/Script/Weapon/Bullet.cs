@@ -15,7 +15,7 @@ namespace Script.Weapon
 
 
         // Start is called before the first frame update
-        public void initBullet(WeaponSO weaponSO, Vector2 initialSpeed)
+        public void Init(WeaponSO weaponSO, Vector2 initialSpeed)
         {
             _rigidbody2D.AddForce(transform.right * weaponSO.speed, ForceMode2D.Impulse);
             _rigidbody2D.AddForce(initialSpeed, ForceMode2D.Impulse);

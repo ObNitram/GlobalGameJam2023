@@ -1,4 +1,4 @@
-using UnityEngine;
+    using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Script.Player
@@ -28,7 +28,7 @@ namespace Script.Player
             _inputManager.Player.Move.canceled += OnMove;
             
             _inputManager.Player.Look.performed += OnLook;
-            _inputManager.Player.Look.canceled += OnLook;
+            //_inputManager.Player.Look.canceled += OnLook;
             
             _inputManager.Player.MustLook.performed += OnMustLook;
             _inputManager.Player.MustLook.canceled += OnMustLook;
@@ -83,6 +83,8 @@ namespace Script.Player
             
             if (!_mustLook)
             {
+                if(-_move == Vector2.zero)
+                    return;
                 _look = _move;
             }
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, _look);

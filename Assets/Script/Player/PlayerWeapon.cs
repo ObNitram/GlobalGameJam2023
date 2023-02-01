@@ -81,7 +81,7 @@ namespace Script.Weapon
                     Quaternion.Euler(0, 0, UnityEngine.Random.Range(-_weaponSO.precision, _weaponSO.precision));
                 rotation *= _firePoint.rotation;
                 Bullet bullet = Instantiate<Bullet>(_bulletPrefab, _firePoint.position, rotation);
-                bullet.initBullet(_weaponSO, _rb.velocity);
+                bullet.Init(_weaponSO, _rb.velocity);
             } 
 
         }
