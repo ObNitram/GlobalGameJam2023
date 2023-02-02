@@ -1,9 +1,12 @@
+using System;
 using Script.Enemy;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
 public class FieldOfView : MonoBehaviour
 {
-    [SerializeField] private float fov = 90f;
+    private float _fov = 90f;
     [SerializeField] int rayCount = 50;
     [SerializeField] float viewDistance = 10f;
 
@@ -13,12 +16,20 @@ public class FieldOfView : MonoBehaviour
     private float angleIncrease;
 
     private Mesh _mesh;
+    private Light2D _light2D;
 
+
+    private void Awake()
+    {
+        
+        _light2D = GetComponent<Light2D>();
+    }
 
     private void Start()
     {
+        setFOV(120f);
         angle = 0;
-        angleIncrease = fov / rayCount;
+        angleIncrease = _fov / rayCount;
         _mesh = new Mesh();
         //GetComponent<MeshFilter>().mesh = _mesh;
     }
@@ -32,6 +43,38 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
+
+    private void SpotEnemy(Enemy enemy)
+    {
+        if (enemy == null)
+        {
+            return;
+        }
+
+        var transform1 = transform;
+        var enemyTransform = enemy.transform;
+
+        Vector3 dirToEnemy = (enemyTransform.position - transform1.position).normalized;
+        float angleBetween = Vector3.Angle(transform1.up, dirToEnemy);
+        if (angleBetween < _fov / 2f)
+        {
+            float distanceToEnemy = Vector3.Distance(transform1.position, enemyTransform.position);
+            if (!Physics2D.Raycast(transform1.position, dirToEnemy, distanceToEnemy, LayerMask.GetMask("Obstacle")))
+            {
+                enemy.HasBeenSpoted();
+            }
+
+            //Debug.DrawRay(transform1.position, dirToEnemy * distanceToEnemy, Color.red);
+        }
+    }
+
+    public void setFOV(float fov)
+    {
+        _fov = fov;
+        _light2D.pointLightOuterAngle = fov;
+    }    
+
+/*
     private void GenerateMeshFilter()
     {
         _mesh.Clear();
@@ -68,36 +111,9 @@ public class FieldOfView : MonoBehaviour
         _mesh.uv = uv;
         _mesh.triangles = triangles;
     }
-
-
-    private void SpotEnemy(Enemy enemy)
-    {
-        if (enemy == null)
-        {
-            return;
-        }
-
-        var transform1 = transform;
-        var enemyTransform = enemy.transform;
-
-        Vector3 dirToEnemy = (enemyTransform.position - transform1.position).normalized;
-        float angleBetween = Vector3.Angle(transform1.up, dirToEnemy);
-        if (angleBetween < fov / 2f)
-        {
-            float distanceToEnemy = Vector3.Distance(transform1.position, enemyTransform.position);
-            if (!Physics2D.Raycast(transform1.position, dirToEnemy, distanceToEnemy, LayerMask.GetMask("Obstacle")))
-            {
-                enemy.HasBeenSpoted();
-            }
-
-            //Debug.DrawRay(transform1.position, dirToEnemy * distanceToEnemy, Color.red);
-        }
-    }
-
-
     public static Vector3 GetVectorFromAngle(float angle)
     {
         float angleRad = angle * (Mathf.PI / 180f);
         return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
-    }
+    }*/
 }

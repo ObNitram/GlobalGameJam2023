@@ -16,7 +16,14 @@ namespace Script.Weapon
       public float precision;
       [Range(1,10)]
       public int numberOfBullets;
-   
+
+      [Range(0,1)]
+      public float idlAiming;
+      [Range(0,1)]
+      public float walkAiming;
+      
+      
+      
       public Sprite sprite;
    
    }

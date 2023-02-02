@@ -3,11 +3,15 @@ using UnityEngine.InputSystem;
 
 namespace Script.Player
 {
+
+
+    
     public class PlayerController : MonoBehaviour
     {
 
         [SerializeField] private float _speed = 200.0f;
         [SerializeField] private float _rotationSpeed = 700.0f;
+        [SerializeField] private PlayerStatistics _playerStatistics;
         
         private InputManager _inputManager;
         
@@ -26,6 +30,10 @@ namespace Script.Player
             _inputManager = InputManagerSingleton.Instance;
             _inputManager.Player.Move.performed += OnMove;
             _inputManager.Player.Move.canceled += OnMove;
+
+            _inputManager.Player.Move.started += _ => { _playerStatistics.SetPlayerState(PlayerState.walk); };
+            _inputManager.Player.Move.canceled += _ => { _playerStatistics.SetPlayerState(PlayerState.idle); };
+
             
             _inputManager.Player.Look.performed += OnLook;
             //_inputManager.Player.Look.canceled += OnLook;
@@ -83,7 +91,7 @@ namespace Script.Player
             
             if (!_mustLook)
             {
-                if(-_move == Vector2.zero)
+                if(_move == Vector2.zero)
                     return;
                 _look = _move;
             }

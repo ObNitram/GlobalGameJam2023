@@ -1,4 +1,3 @@
-using System;
 using Script.Interface;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,7 +16,7 @@ namespace Script.Enemy
         private SpriteRenderer _spriteRenderer;
         private CircleCollider2D _circleCollider;
         
-        private float timeIsSpoted = 0;
+        private float timeIsSpoted;
         // Start is called before the first frame update
         void Awake()
         {
@@ -56,9 +55,9 @@ namespace Script.Enemy
 
         public void HasBeenSpoted()
         {
-            if (timeIsSpoted < 3)
+            if (timeIsSpoted < 0.1)
             {
-                timeIsSpoted += 1f;
+                timeIsSpoted += 0.1f;
             }
         }
 

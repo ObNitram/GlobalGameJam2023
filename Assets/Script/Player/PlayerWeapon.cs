@@ -1,10 +1,10 @@
 using System.Collections;
-using Unity.VisualScripting;
+using Script.Weapon;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
-namespace Script.Weapon
+namespace Script.Player
 {
     public class PlayerWeapon : MonoBehaviour
     {
@@ -12,22 +12,22 @@ namespace Script.Weapon
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private WeaponSO _weaponSO;
         [SerializeField] private bool _isRapidFire = false;
-      
-    
+        [SerializeField] private PlayerStatistics _statistics;
+
         private InputManager _inputManager;
         private Rigidbody2D _rb;
         private Light2D _light;
-        
+
         private bool _mustShoot = false;
         private WaitForSeconds _fireRateWait;
-    
-    
+
+
         private void Awake()
         {
             _inputManager = InputManagerSingleton.Instance;
             _inputManager.Player.Shoot.started += StartShoot;
             _inputManager.Player.Shoot.canceled += StopShoot;
-            
+
             _rb = GetComponent<Rigidbody2D>();
             _light = _firePoint.GetComponent<Light2D>();
         }
@@ -42,7 +42,6 @@ namespace Script.Weapon
             _inputManager.Player.Shoot.Disable();
         }
 
-    
         private void StartShoot(InputAction.CallbackContext context)
         {
             if (_isRapidFire)
@@ -61,7 +60,7 @@ namespace Script.Weapon
         {
             _mustShoot = false;
         }
-    
+
         private IEnumerator RapidFire()
         {
             while (_mustShoot)
@@ -74,16 +73,16 @@ namespace Script.Weapon
         void Shoot()
         {
             _light.intensity = 1;
-            
+
             for (int i = 0; i < _weaponSO.numberOfBullets; i++)
             {
                 Quaternion rotation =
-                    Quaternion.Euler(0, 0, UnityEngine.Random.Range(-_weaponSO.precision, _weaponSO.precision));
+                    Quaternion.Euler(0, 0,
+                        UnityEngine.Random.Range(-_statistics.currentAiming / 2, _statistics.currentAiming / 2));
                 rotation *= _firePoint.rotation;
                 Bullet bullet = Instantiate<Bullet>(_bulletPrefab, _firePoint.position, rotation);
                 bullet.Init(_weaponSO, _rb.velocity);
-            } 
-
+            }
         }
     }
 }

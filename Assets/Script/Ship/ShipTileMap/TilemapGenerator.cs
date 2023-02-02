@@ -16,7 +16,7 @@ namespace Script.Ship.ShipTileMap
         public void GenerateTilemap()
         {
             _terrainTilemap.ClearAllTiles();
-            _wallTilemap.ClearAllTiles();
+            //_wallTilemap.ClearAllTiles();
             for (int x = 0; x < _shipSize.x; x++)
             {
                 for (int y = 0; y < _shipSize.y; y++)
