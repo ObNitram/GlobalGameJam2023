@@ -84,5 +84,13 @@ namespace Script.Player
                 bullet.Init(_weaponSO, _rb.velocity);
             }
         }
+
+/*
+        private Quaternion RandAngle(float maxAngle)
+        {
+            
+            
+        }
+        */
     }
 }

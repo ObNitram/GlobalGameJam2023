@@ -30,7 +30,7 @@ public class Vise : MonoBehaviour
 
     public void UpdateTargetAngleWithDeg(float angle)
     {
-        _currentAngle = 360f / angle;
+        _currentAngle = angle;
         UpdateVise();
     }
 
