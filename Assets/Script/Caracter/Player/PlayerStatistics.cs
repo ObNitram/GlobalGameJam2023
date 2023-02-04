@@ -7,31 +7,31 @@ using Update = UnityEngine.PlayerLoop.Update;
 
 namespace Script.Player
 {
-
     public enum PlayerState
     {
         walk,
         idle
     }
 
-    
-   
+
     public class PlayerStatistics : MonoBehaviour
     {
-        [SerializeField] private float aiming;
-        public float currentAiming;
-        public float targetAiming;
-        public float currentAimingVelocity;
-        
-        [SerializeField]
+        //[SerializeField] private float aiming;
+        [HideInInspector] public float currentAiming;
+        private float targetAiming;
+        private float currentAimingVelocity;
+
+        public float speed = 200.0f;
+        public float rotationSpeed = 700.0f;
+
+
         public PlayerState _playerState;
-        
+
         [SerializeField] private Vise _viseUI;
 
 
         public WeaponSO weaponSo1;
-        
-        
+
 
         private void Start()
         {
@@ -55,9 +55,14 @@ namespace Script.Player
                 }
             }
             
+            UpdatePlayerAiming();
             
-            
-            currentAiming = Mathf.SmoothDamp(currentAiming,targetAiming, ref currentAimingVelocity ,1f);
+        }
+
+
+        public void UpdatePlayerAiming()
+        {
+            currentAiming = Mathf.SmoothDamp(currentAiming, targetAiming, ref currentAimingVelocity, 1f);
             _viseUI.UpdateTargetAngleWithFloat(currentAiming);
         }
 
@@ -65,8 +70,5 @@ namespace Script.Player
         {
             _playerState = playerState;
         }
-        
-        
     }
-    
-}        
+}

@@ -5,9 +5,9 @@ public class Vise : MonoBehaviour
 
     private Mesh _mesh;
     private const int _arcLevelOfDetail = 10;
-    private const float viewDistance = 3f;
+    private const float viewDistance = 2f;
 
-    [SerializeField] private float _currentAngle;
+    private float _currentAngle;
     
     private void Awake()
     {

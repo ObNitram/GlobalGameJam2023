@@ -1,4 +1,5 @@
 using Script.Interface;
+using SO;
 using UnityEngine;
 using UnityEngine.AI;
 

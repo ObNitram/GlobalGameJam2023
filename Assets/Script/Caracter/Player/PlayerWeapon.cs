@@ -72,25 +72,20 @@ namespace Script.Player
 
         void Shoot()
         {
-            _light.intensity = 1;
+            //_light.intensity = 1;
 
             for (int i = 0; i < _weaponSO.numberOfBullets; i++)
             {
                 Quaternion rotation =
                     Quaternion.Euler(0, 0,
-                        UnityEngine.Random.Range(-_statistics.currentAiming / 2, _statistics.currentAiming / 2));
+                        UnityEngine.Random.Range(-_statistics.currentAiming * 180, _statistics.currentAiming * 180) + 90f);
                 rotation *= _firePoint.rotation;
+                
                 Bullet bullet = Instantiate<Bullet>(_bulletPrefab, _firePoint.position, rotation);
                 bullet.Init(_weaponSO, _rb.velocity);
             }
         }
 
-/*
-        private Quaternion RandAngle(float maxAngle)
-        {
-            
-            
-        }
-        */
+
     }
 }
