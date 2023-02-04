@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Script.Enemy;
+using Script.Caracter.Enemy;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour

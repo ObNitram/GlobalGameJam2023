@@ -1,5 +1,5 @@
 using System;
-using Script.Enemy;
+using Script.Caracter.Enemy;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
@@ -18,7 +18,7 @@ public class FieldOfView : MonoBehaviour
     private Mesh _mesh;
     private Light2D _light2D;
 
-
+    
     private void Awake()
     {
         
