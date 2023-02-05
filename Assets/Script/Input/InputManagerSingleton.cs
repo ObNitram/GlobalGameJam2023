@@ -20,5 +20,7 @@ namespace Script
         private static InputManager _inputManager;
         public static InputManager Instance => _inputManager ??= new InputManager();
     }
+    
+    
 }
 

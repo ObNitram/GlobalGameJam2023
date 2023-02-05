@@ -21,7 +21,15 @@ public class CaracterAnimator : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    public void UpdateAnimator(Vector2 dir, bool isMoving)
+    {
+        this.isMoving = isMoving;
+        direction = dir;
+    }
+
+    
+    
+    private void LateUpdate()
     {
         timer += Time.deltaTime;
         if (timer > spritePlayer.frameRate)

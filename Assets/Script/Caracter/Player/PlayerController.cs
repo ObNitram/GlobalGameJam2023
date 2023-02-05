@@ -52,6 +52,7 @@ namespace Script.Player
 
             _inputManager.Player.MustLook.performed += OnMustLook;
             _inputManager.Player.MustLook.canceled += OnMustLook;
+            
         }
 
         private void OnEnable()
@@ -92,7 +93,6 @@ namespace Script.Player
         {
             _mustLook = context.ReadValueAsButton();
         }
-
 
         private void FixedUpdate()
         {

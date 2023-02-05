@@ -47,13 +47,13 @@ public class IA_Enemy
             {
                 RejectDirection(_rayDirections[i], hit.distance / _rayDistance);
             }
-            else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("scarabScarabEnemy"))
             {
                 RejectDirection(_rayDirections[i], hit.distance / _rayDistance);
             }
             else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                AtractDirection(_rayDirections[i], hit.distance / _rayDistance);
+                ScalarDirection(_rayDirections[i], hit.distance / _rayDistance);
             }
         }
 
@@ -67,7 +67,7 @@ public class IA_Enemy
         }
 
         //DebugRays();
-        Debug.DrawRay(transform.position, averageDirection.normalized, Color.red);
+        //Debug.DrawRay(transform.position, averageDirection.normalized, Color.red);
         return averageDirection.normalized;
     }
 
@@ -88,10 +88,22 @@ public class IA_Enemy
         {
             float dotProduct = Vector2.Dot(A_direction, _rayDirections[i]);
             dotProduct = (dotProduct + 1f) / 2f;
-            _directions[i] += _rayDirections[i] * (dotProduct * (1f - power));
+            _directions[i] += _rayDirections[i] * (dotProduct * (1f - power) * 2f);
         }
     }
 
+    private void ScalarDirection(Vector2 A_direction, float power = 0.5f)
+    {
+        A_direction = Vector2.Lerp(Vector2.Perpendicular(A_direction), A_direction, 0.8f); 
+        
+        for (int i = 0; i < _numberOfRays; i++)
+        {
+            float dotProduct = Vector2.Dot(A_direction, _rayDirections[i]);
+            dotProduct = (dotProduct + 1f) / 2f;
+            _directions[i] *= dotProduct * (1f - power);
+        }
+    }
+    
 
     private void DebugRays()
     {

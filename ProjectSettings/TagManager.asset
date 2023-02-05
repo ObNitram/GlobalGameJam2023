@@ -16,7 +16,7 @@ TagManager:
   - Obstacle
   - Enemy
   - Player
-  - 
+  - FieldOfView
   - 
   - 
   - 

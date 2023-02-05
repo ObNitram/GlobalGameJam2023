@@ -1,4 +1,6 @@
 using System;
+using Script.Base;
+using Script.Interface;
 using Script.Weapon;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,8 +16,12 @@ namespace Script.Player
     }
 
 
-    public class PlayerStatistics : MonoBehaviour
+    public class PlayerStatistics : MonoBehaviour, IAttackable
     {
+        public static PlayerStatistics Instance;
+        
+        
+        
         //[SerializeField] private float aiming;
         [HideInInspector] public float currentAiming;
         private float targetAiming;
@@ -23,19 +29,21 @@ namespace Script.Player
 
         public float speed = 200.0f;
         public float rotationSpeed = 700.0f;
-
+        public int currentLife;
 
         public PlayerState _playerState;
 
         [SerializeField] private Vise _viseUI;
-
+        [SerializeField] PlayTime playTime;
 
         public WeaponSO weaponSo1;
 
 
         private void Start()
         {
+            PlayerStatistics.Instance = this;
             SetPlayerState(PlayerState.idle);
+            currentLife = 100;
         }
 
 
@@ -69,6 +77,22 @@ namespace Script.Player
         public void SetPlayerState(PlayerState playerState)
         {
             _playerState = playerState;
+        }
+
+        public void Damage(int damage)
+        {
+            Debug.Log("Player take damage");
+            currentLife -= damage;
+            if (currentLife <= 0)
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            Debug.Log("Player is dead");
+            playTime.EndGame();
         }
     }
 }

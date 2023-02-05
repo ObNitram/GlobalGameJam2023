@@ -3,7 +3,7 @@ using Script.Caracter.Enemy;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
-
+/*
 public class FieldOfView : MonoBehaviour
 {
     private float _fov = 90f;
@@ -44,7 +44,7 @@ public class FieldOfView : MonoBehaviour
     }
 
 
-    private void SpotEnemy(Enemy enemy)
+    private void SpotEnemy(scarabScarabEnemy enemy)
     {
         if (enemy == null)
         {
@@ -115,5 +115,6 @@ public class FieldOfView : MonoBehaviour
     {
         float angleRad = angle * (Mathf.PI / 180f);
         return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
-    }*/
+    }
 }
+*/

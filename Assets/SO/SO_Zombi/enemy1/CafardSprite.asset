@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e360b0b8774a987a40fd4d201aae09, type: 3}
+  m_Name: CafardSprite
+  m_EditorClassIdentifier: 
+  spritesIdle:
+  - {fileID: -2134205730, guid: 6f86c0f3f8393e8c189b575236d49c2d, type: 3}
+  - {fileID: 1048462591, guid: 6f86c0f3f8393e8c189b575236d49c2d, type: 3}
+  - {fileID: -2117689406, guid: 6f86c0f3f8393e8c189b575236d49c2d, type: 3}
+  - {fileID: 900523009, guid: 6f86c0f3f8393e8c189b575236d49c2d, type: 3}
+  spritesIdleBack:
+  - {fileID: -2134205730, guid: 6f86c0f3f8393e8c189b575236d49c2d, type: 3}
+  - {fileID: 1048462591, guid: 6f86c0f3f8393e8c189b575236d49c2d, type: 3}
+  - {fileID: -2117689406, guid: 6f86c0f3f8393e8c189b575236d49c2d, type: 3}
+  - {fileID: 900523009, guid: 6f86c0f3f8393e8c189b575236d49c2d, type: 3}
+  spritesWalk:
+  - {fileID: -2080013283, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 1436866526, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: -79690877, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 1152560677, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 2050840336, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 1690117536, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 770828476, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 633729219, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  spritesWalkBack:
+  - {fileID: -2080013283, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 1436866526, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: -79690877, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 1152560677, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 2050840336, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 1690117536, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 770828476, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  - {fileID: 633729219, guid: ad70d7b28561b8bd583e6db3ac25d910, type: 3}
+  frameRate: 0.217

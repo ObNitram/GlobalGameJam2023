@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SO
 {
-    [CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/SpriteAnimator")]
+    [CreateAssetMenu(fileName = "New scarabScarabEnemy", menuName = "ScriptableObject/SpriteAnimator")]
 
     public class SC_SpriteAnimator : ScriptableObject
     {
