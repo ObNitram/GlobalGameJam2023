@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SetupBase",
+                    "name": "ChangeWeapon",
                     "type": "Button",
                     "id": "7110ff88-de3c-4aaf-80c2-b3ec7532547d",
                     "expectedControlType": "Button",
@@ -142,12 +142,12 @@
                 },
                 {
                     "name": "",
-                    "id": "603cf67c-79df-4b6a-8eef-cb895c1299ec",
-                    "path": "<Keyboard>/b",
+                    "id": "74e88447-116b-4780-8858-79f285a16883",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SetupBase",
+                    "action": "ChangeWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

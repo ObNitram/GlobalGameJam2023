@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b1fa58210109715af4b6b3f36b3713, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  speed: 35.2
-  damage: 3
-  fireRate: 0.5
-  range: 2.54
-  precision: 33.6
+  speed: 38.4
+  damage: 5
+  fireRate: 0.35
+  range: 0.65
+  distanceDeVue: 8
   numberOfBullets: 10
+  idlAiming: 0.078
+  walkAiming: 0.099
+  penetration: 0
   sprite: {fileID: 21300000, guid: 649688cc5598ebe228cdee644ca36b57, type: 3}

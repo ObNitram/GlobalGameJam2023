@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b1fa58210109715af4b6b3f36b3713, type: 3}
   m_Name: Blaster
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 52.3
   damage: 10
   fireRate: 0.1
   range: 10
-  precision: 18
+  distanceDeVue: 15
   numberOfBullets: 1
-  idlAiming: 0.022
-  walkAiming: 0.103
+  idlAiming: 0.033
+  walkAiming: 0.138
+  penetration: 0
   sprite: {fileID: 21300000, guid: f4369ed78f9c22882ae2be37cd8afe59, type: 3}

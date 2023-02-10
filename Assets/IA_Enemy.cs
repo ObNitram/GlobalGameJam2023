@@ -94,7 +94,7 @@ public class IA_Enemy
 
     private void ScalarDirection(Vector2 A_direction, float power = 0.5f)
     {
-        A_direction = Vector2.Lerp(Vector2.Perpendicular(A_direction), A_direction, 0.8f); 
+        A_direction = Vector2.Lerp(Vector2.Perpendicular(A_direction), A_direction, 0.6f); 
         
         for (int i = 0; i < _numberOfRays; i++)
         {

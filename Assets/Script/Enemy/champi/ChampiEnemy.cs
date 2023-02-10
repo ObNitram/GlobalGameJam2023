@@ -33,7 +33,8 @@ namespace Script.Enemy
         [SerializeField] private CaracterAnimator _caracterAnimator;
         [SerializeField] private Transform _rotation;
         [SerializeField] private meleAttackAnimator _meleAttackAnimator;
-
+        [SerializeField] private AudioSource _audioSource;
+        
         // Start is called before the first frame update
         void Awake()
         {
@@ -47,8 +48,6 @@ namespace Script.Enemy
 
         private void Start()
         {
-            
-            
             Init(PlayerStatistics.Instance.transform);
             _iaEnemy = new IA_Enemy(transform);
         }
@@ -110,7 +109,8 @@ namespace Script.Enemy
         private void AttackState()
         {
             
-            _agent.enabled = false;
+            _agent.enabled = true;
+            _agent.SetDestination(player.position);
             
             _timeAttack += Time.deltaTime;
             if (_timeAttack > _enemyData.cooldownAttack)
@@ -119,7 +119,6 @@ namespace Script.Enemy
                 AttackPlayer();
             }
 
-            _targetWay = _iaEnemy.CalculateDirection();
             _targetLook = (player.position - transform.position).normalized;
         }
 
@@ -129,6 +128,7 @@ namespace Script.Enemy
                 LayerMask.GetMask("Player"));
 
             if (colliders == null) return;
+            _audioSource.Play();
             _meleAttackAnimator.Attack();
             colliders.GetComponent<IAttackable>().Damage(_enemyData.attackDamage);
         }
@@ -138,7 +138,11 @@ namespace Script.Enemy
         {
             currentLife -= damage;
 
-            if (currentLife <= 0) Destroy(gameObject);
+            if (currentLife <= 0)
+            {
+                Score.score += _enemyData.score;
+                Destroy(gameObject);
+            }
         }
     }
 }

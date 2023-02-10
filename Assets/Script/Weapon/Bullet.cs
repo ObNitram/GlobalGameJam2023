@@ -1,5 +1,6 @@
 using Script.Interface;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 // lichess.org
 
@@ -10,9 +11,10 @@ namespace Script.Weapon
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private SpriteRenderer _spriteRenderer;
-        
+        [SerializeField] private Light2D _light2D;
         private WeaponSO _weaponSo;
 
+        private int currentPenetration = 0;
 
         // Start is called before the first frame update
         public void Init(WeaponSO weaponSO, Vector2 initialSpeed)
@@ -22,6 +24,7 @@ namespace Script.Weapon
             Destroy(gameObject, weaponSO.range);
             _weaponSo = weaponSO;
             _spriteRenderer.sprite = weaponSO.sprite;
+            _light2D.lightCookieSprite = weaponSO.sprite;
         }
 
 
@@ -30,9 +33,20 @@ namespace Script.Weapon
             if (col.CompareTag(tag)) return;
 
             IAttackable enemy = col.GetComponent<IAttackable>();
-            enemy?.Damage(_weaponSo.damage);
 
-            Destroy(gameObject);
+            if (enemy == null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+
+            enemy.Damage(_weaponSo.damage);
+
+            if (currentPenetration < _weaponSo.penetration)
+                currentPenetration++;
+            else
+                Destroy(gameObject);
         }
     }
 }

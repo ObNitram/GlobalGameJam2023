@@ -23,7 +23,7 @@ namespace Script.Enemy
         public EnemyState _enemyState;
 
         public Transform player;
-
+        private float timeIsSpoted;
         private IA_Enemy _iaEnemy;
         private NavMeshAgent _agent;
         private Rigidbody2D _rigidbody2D;
@@ -80,8 +80,12 @@ namespace Script.Enemy
 
             _rigidbody2D.AddForce(_targetWay);
             _rotation.rotation = Quaternion.LookRotation(Vector3.forward, _targetLook);
-            
             _caracterAnimator.UpdateAnimator(_targetWay, _targetWay.magnitude > 0.1f);
+            
+
+
+            
+            
         }
 
         private void UpdateEnemyState()
@@ -138,7 +142,19 @@ namespace Script.Enemy
         {
             currentLife -= damage;
 
-            if (currentLife <= 0) Destroy(gameObject);
+            if (currentLife <= 0)
+            {
+                Score.score += _enemyData.score;
+                Destroy(gameObject);
+            }
+        }
+        
+        public void HasBeenSpoted()
+        {
+            if (timeIsSpoted < 0.1)
+            {
+                timeIsSpoted += 0.1f;
+            }
         }
     }
 }

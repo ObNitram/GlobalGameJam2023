@@ -1,5 +1,4 @@
 using Script.Player;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour

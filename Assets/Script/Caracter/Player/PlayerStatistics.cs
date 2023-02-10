@@ -24,6 +24,8 @@ namespace Script.Player
         
         //[SerializeField] private float aiming;
         [HideInInspector] public float currentAiming;
+        [SerializeField] private PlayerWeapon _playerWeapon;
+        
         private float targetAiming;
         private float currentAimingVelocity;
 
@@ -53,12 +55,12 @@ namespace Script.Player
             {
                 case PlayerState.idle:
                 {
-                    targetAiming = weaponSo1.idlAiming;
+                    targetAiming = _playerWeapon._weaponSO[_playerWeapon._currentWeapon].idlAiming;
                     break;
                 }
                 case PlayerState.walk:
                 {
-                    targetAiming = weaponSo1.walkAiming;
+                    targetAiming = _playerWeapon._weaponSO[_playerWeapon._currentWeapon].walkAiming;
                     break;
                 }
             }
@@ -70,6 +72,7 @@ namespace Script.Player
 
         public void UpdatePlayerAiming()
         {
+            
             currentAiming = Mathf.SmoothDamp(currentAiming, targetAiming, ref currentAimingVelocity, 1f);
             _viseUI.UpdateTargetAngleWithFloat(currentAiming);
         }
@@ -92,7 +95,7 @@ namespace Script.Player
         private void Die()
         {
             Debug.Log("Player is dead");
-            playTime.EndGame();
+            playTime.EndGameLose();
         }
     }
 }

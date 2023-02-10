@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6049965363664568333}
   - component: {fileID: 6049965363664568332}
   - component: {fileID: 6049965363664568322}
+  - component: {fileID: 4747783634525494271}
   m_Layer: 7
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -116,8 +117,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfEnemyReady: 0
   numberOfChampiReady: 0
-  speedGenerationOfScarab: 20
-  speedGenerationOfChampi: 5
+  speedGenerationOfScarab: 80
+  speedGenerationOfChampi: 15
   speedOfLaunch: 10
   scarabScarabEnemy: {fileID: 394931826895821676, guid: 8bad27a6688702e7f85f0d4db45ebd15, type: 3}
   ChampiEnemy: {fileID: 1696092261617493192, guid: 8a2cfef0e80f43102a3c3e1c5c5777f2, type: 3}
+--- !u!114 &4747783634525494271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6049965363664568321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa32c107e72ee85d9a608b1468c3540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 6049965363664568333}
+  _sprite:
+  - {fileID: -369756155, guid: c086bda7dc218044c9b2543b5bb8d90b, type: 3}
+  - {fileID: -1688697462, guid: c086bda7dc218044c9b2543b5bb8d90b, type: 3}
+  - {fileID: -2012348056, guid: c086bda7dc218044c9b2543b5bb8d90b, type: 3}
+  - {fileID: 858472060, guid: c086bda7dc218044c9b2543b5bb8d90b, type: 3}
+  - {fileID: 413005475, guid: c086bda7dc218044c9b2543b5bb8d90b, type: 3}
+  frameTime: 0.2

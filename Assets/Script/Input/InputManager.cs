@@ -64,7 +64,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SetupBase"",
+                    ""name"": ""ChangeWeapon"",
                     ""type"": ""Button"",
                     ""id"": ""7110ff88-de3c-4aaf-80c2-b3ec7532547d"",
                     ""expectedControlType"": ""Button"",
@@ -164,12 +164,12 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""603cf67c-79df-4b6a-8eef-cb895c1299ec"",
-                    ""path"": ""<Keyboard>/b"",
+                    ""id"": ""74e88447-116b-4780-8858-79f285a16883"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SetupBase"",
+                    ""action"": ""ChangeWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -184,7 +184,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_MustLook = m_Player.FindAction("MustLook", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
-        m_Player_SetupBase = m_Player.FindAction("SetupBase", throwIfNotFound: true);
+        m_Player_ChangeWeapon = m_Player.FindAction("ChangeWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -248,7 +248,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_MustLook;
     private readonly InputAction m_Player_Shoot;
-    private readonly InputAction m_Player_SetupBase;
+    private readonly InputAction m_Player_ChangeWeapon;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -257,7 +257,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @MustLook => m_Wrapper.m_Player_MustLook;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
-        public InputAction @SetupBase => m_Wrapper.m_Player_SetupBase;
+        public InputAction @ChangeWeapon => m_Wrapper.m_Player_ChangeWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -279,9 +279,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
-                @SetupBase.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetupBase;
-                @SetupBase.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetupBase;
-                @SetupBase.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetupBase;
+                @ChangeWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeWeapon;
+                @ChangeWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeWeapon;
+                @ChangeWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeWeapon;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -298,9 +298,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
-                @SetupBase.started += instance.OnSetupBase;
-                @SetupBase.performed += instance.OnSetupBase;
-                @SetupBase.canceled += instance.OnSetupBase;
+                @ChangeWeapon.started += instance.OnChangeWeapon;
+                @ChangeWeapon.performed += instance.OnChangeWeapon;
+                @ChangeWeapon.canceled += instance.OnChangeWeapon;
             }
         }
     }
@@ -311,6 +311,6 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnMustLook(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
-        void OnSetupBase(InputAction.CallbackContext context);
+        void OnChangeWeapon(InputAction.CallbackContext context);
     }
 }

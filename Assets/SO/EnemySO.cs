@@ -17,9 +17,10 @@ namespace SO
         [Range(1,10)] public float speed;
         
         SC_SpriteAnimator _spriteAnimator;
-        
-        
-        
+
+        public int score;
+
+
 
     }
 }

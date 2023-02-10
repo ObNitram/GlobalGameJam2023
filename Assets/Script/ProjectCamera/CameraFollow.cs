@@ -1,3 +1,4 @@
+using Script.Player;
 using UnityEngine;
 
 namespace Script.ProjectCamera
@@ -7,7 +8,8 @@ namespace Script.ProjectCamera
         [SerializeField] private Transform target;
         [SerializeField] private float _smoothTime = 0.3f;
         [SerializeField] private float _maxRange = 10.0f;
-
+        [SerializeField] private PlayerWeapon _playerWeapon;
+        
 
         private Vector3 velocity = Vector3.zero;
 
@@ -36,9 +38,9 @@ namespace Script.ProjectCamera
 
                 Vector2 distance = _lookTarget - (Vector2)target.position;
 
-                if (distance.magnitude > _maxRange)
+                if (distance.magnitude > _playerWeapon._weaponSO[_playerWeapon._currentWeapon].distanceDeVue)
                 {
-                    _lookTarget = (Vector2)targetPosition + distance.normalized * _maxRange;
+                    _lookTarget = (Vector2)targetPosition + distance.normalized * _playerWeapon._weaponSO[_playerWeapon._currentWeapon].distanceDeVue;
                 }
 
                 transform.position = Vector3.SmoothDamp(transform.position,
